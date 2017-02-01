@@ -1,30 +1,43 @@
-
-<script src="lib/mqtt.js"></script>
-<script type="text/javascript">
-// Create a client instance
-client = new Paho.MQTT.Client("broker.mqttdashboard.com", Number(8000), "clientId_test");
-
-// set callback handlers
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// connect the client
-client.connect({onSuccess:onConnect});
-
-
-// called when the client connects
-function onConnect() {
-  // Once a connection has been made, make a subscription and send a message.
-  console.log("onConnect");
-  client.subscribe("test/mqtt"); //Toppic sub
-  message = new Paho.MQTT.Message("Hello MJU"); //message pub
-  message.destinationName = "test/mqtt"; //Toppic pub
-  client.send(message);
+<?php
+$access_token = 'I10FeTUvizhulrxBQp4WTsRurtLiAvaLaASuEbK9/YU/zGV9BcPDMrrn28QBTD6Wh4ZL0BFSBQKTli+zaxY7zEdBb3u1xRu+6l8i9qt8leRllyTHUO+tNsXDz/Enq0DuC2muj7WvcseFkGTPFFTJdAdB04t89/1O/w1cDnyilFU=';
+// Get POST body content
+$content = file_get_contents('php://input');
+// Parse JSON
+$events = json_decode($content, true);
+// Validate parsed JSON data
+if (!is_null($events['events'])) {
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+		// Reply only when message sent is in 'text' format
+		if ($event['type'] == 'Hi' && $event['Hi']['type'] == 'text') {
+			// Get text sent
+			$text = $event['Hillow']['text'];
+			// Get replyToken
+			$replyToken = $event['replyToken'];
+			// Build message to reply back
+			
+			$messages = [
+				'type' => 'text',
+				'text' => $text
+			];	
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+			echo $result . "\r\n";
+		}
+	}
 }
-
-// called when the client loses its connection
-function onConnectionLost(responseObject) {
-  if (responseObject.errorCode !== 0) {
-    console.log("onConnectionLost:"+responseObject.errorMessage);
-  }
-}
+echo "OK";
