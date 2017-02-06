@@ -8,7 +8,9 @@ client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
 // connect the client
-client.connect({onSuccess:onConnect});
+  client.connect({onSuccess: onConnect, useSSL: true});
+//client.connect({onSuccess:onConnect,useSSL:true});
+
 
 
 // called when the client connects
