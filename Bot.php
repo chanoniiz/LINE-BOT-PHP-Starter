@@ -1,4 +1,4 @@
-<script type="text/javascript" src="file.js"></script>
+<script type="text/javascript" src="TestMqtt.php"></script>
 
 <?php
 $access_token = 'I10FeTUvizhulrxBQp4WTsRurtLiAvaLaASuEbK9/YU/zGV9BcPDMrrn28QBTD6Wh4ZL0BFSBQKTli+zaxY7zEdBb3u1xRu+6l8i9qt8leRllyTHUO+tNsXDz/Enq0DuC2muj7WvcseFkGTPFFTJdAdB04t89/1O/w1cDnyilFU=';
