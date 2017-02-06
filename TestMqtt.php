@@ -1,7 +1,7 @@
 <script src="lib/mqtt.js"></script>
 <script type="text/javascript">
 // Create a client instance
-client = new Paho.MQTT.Client("broker.mqttdashboard.com", Number(8000), "clientId_test");
+client = new Paho.MQTT.Client("iot.eclipse.org", Number(443), "clientId_test");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
