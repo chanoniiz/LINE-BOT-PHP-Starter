@@ -1,5 +1,13 @@
 <script src="lib/mqtt.js"></script>
 <script type="text/javascript">
+ //get ค่า text จากหน้า Bot
+  var u_text=<?=$text?>;
+  if(text>!=null){
+    alert("You pass");
+  }else{
+    alert("You fail");  
+  }
+  
 // Create a client instance
 client = new Paho.MQTT.Client("iot.eclipse.org", Number(443), "clientId_test");
 
