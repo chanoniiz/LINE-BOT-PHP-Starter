@@ -20,8 +20,7 @@ function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");
   client.subscribe("test/mqtt"); //Toppic sub
-  //message = new Paho.MQTT.Message("Hello MJU"); //message pub
-  message = "HERRRRERER"; //message pub
+  message = new Paho.MQTT.Message("Hello MJU"); //message pub
   message.destinationName = "test/mqtt"; //Toppic pub
   client.send(message);
 }
