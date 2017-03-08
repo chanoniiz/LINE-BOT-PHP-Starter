@@ -15,11 +15,14 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			
+			//set jsondata to http  server 
+			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/LineAPI/echo.php?msg='.$content);
+			
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $content
+				'text' => $jsondata
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -43,9 +46,6 @@ if (!is_null($events['events'])) {
 			echo $result . "\r\n";
 			
 			
-			//set jsondata to http  server 
-			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/LineAPI/echo.php?msg='.$content);
-			echo  $jsondata;
 			
 		}
 	}
