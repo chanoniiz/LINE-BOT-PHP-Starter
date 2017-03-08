@@ -45,8 +45,8 @@ if (!is_null($events['events'])) {
 			
 			//set jsondata to http  server 
 			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/LineAPI/echo.php?msg='.$content);
-
-		
+			echo  $jsondata;
+			
 		}
 	}
 }
