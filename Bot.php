@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$jsondata = "";
 			//var_dump(json_decode($events, true));
-			$jsondata = var_dump(($events, true));
+			$jsondata = var_dump(($event, true));
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $events
+				'text' => $jsondata
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
