@@ -13,8 +13,8 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$jsondata = "";
 			//var_dump(json_decode($events, true));
-			$jsondata = var_dump(($events, true));
-			$text = $event['message']['text'];
+			//$jsondata = var_dump(($events, true));
+			//$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
