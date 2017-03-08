@@ -6,13 +6,13 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
-$datajson ="";
+//$datajson ="";
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			$datajson = var_dump($events);
+			//$datajson = var_dump($events);
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			//$messages = [
 				'type' => 'text',
-				'text' => $datajson
+				'text' => $text
 			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
