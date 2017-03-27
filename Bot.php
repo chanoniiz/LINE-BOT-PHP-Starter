@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			//set jsondata to http  server 
-			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/LineAPI/echo.php?msg='.$content);
+			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/LineAPI/Bot.php?msg='.$content);
 			
 			// Build message to reply back
 			$messages = [
