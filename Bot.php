@@ -21,21 +21,18 @@ if (!is_null($events['events'])) {
 			$form = "line";
 			
 		
-			$myObj->$senderID;
-			$myObj->$threadID;
-			$myObj->$text;
-			$myObj->$form;
-			
+		
 			
 			//$data_json = $senderID.$threadID.$text.$form ;
-			$data_json = json_encode($myObj);
+			
+			$data_json = json_encode({senderID:$senderID} );
 			
 			//set jsondata to http  server 
 			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$data_json);
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $data_json.text
+				'text' => $data_json
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
