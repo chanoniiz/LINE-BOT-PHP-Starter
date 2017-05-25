@@ -20,8 +20,13 @@ if (!is_null($events['events'])) {
 			$threadID = $event['userId'];
 			$form = "line";
 			
-			$data_json = $senderID.$threadID.$text.$form ;
-			$data_json = json_encode($data_json);
+			$myObj->$senderID;
+			$myObj->$threadID;
+			$myObj->$text;
+			$myObj->$form;
+			
+			//$data_json = $senderID.$threadID.$text.$form ;
+			$data_json = json_encode($myObj);
 			
 			//set jsondata to http  server 
 			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$data_json);
