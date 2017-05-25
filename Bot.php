@@ -15,13 +15,19 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
+			// set value new ;
+			$senderID = $event['replyToken'];
+			$threadID = $event['userId'];
+			$form = "line";
+			
+			$data_json = $senderID.$threadID.$text.$form ;
 			
 			//set jsondata to http  server 
-			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$content);
+			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$data_json);
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $content
+				'text' => $data_json
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
