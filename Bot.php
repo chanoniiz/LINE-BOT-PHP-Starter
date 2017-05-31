@@ -22,6 +22,8 @@ if (!is_null($events['events'])) {
 			$myObj->threadID = $event['source']['userId'];
 			$myObj->form = "line";
 			
+			$threadID = $event['source']['userId'];
+			
 			$data_json = json_encode($myObj);
 			
 			//set jsondata to http  server 
@@ -29,7 +31,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $data_json
+				'text' => $threadID
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
