@@ -17,13 +17,16 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			// set value new ;
 			$myObj->senderID = $event['replyToken'];
-			$myObj->threadID = $event['source']['userId'];
+			$myObj->threadID = $event['userId'];
 			$myObj->text = $event['message']['text'];
 			$myObj->form = "line";
 			
-			//$data_json = $senderID.$threadID.$text.$form ;
 			
-			$data_json = json_encode($myObj);
+			$threadID = $event['userId'];
+			
+			$data_json = $threadID ;
+			
+			//$data_json = json_encode($myObj);
 			
 			//set jsondata to http  server 
 			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$data_json);
