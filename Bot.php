@@ -16,9 +16,9 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// set value new ;
-			$myObj->name = "John";
-			$myObj->age = 30;
-			$myObj->city = "New York";
+			$myObj->senderID = $event['replyToken'];
+			$myObj->threadID = $event['userId'];
+			$myObj->form = "line";
 			
 			$senderID = $event['replyToken'];
 			$threadID = $event['userId'];
