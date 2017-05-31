@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
-			
+			$threadID = $event['userId'];
 			$replyToken = $event['replyToken'];
 			// set value new ;
 			$myObj->senderID = $event['replyToken'];
