@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
 			
 		
 			
-			//$data_json = $threadID ;
+			$data_json = $threadID ;
 			
 			$data_json = json_encode($myObj);
 			
