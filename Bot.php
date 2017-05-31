@@ -18,7 +18,7 @@ if (!is_null($events['events'])) {
 			// set value new ;
 			$myObj->senderID = $event['replyToken'];
 			$myObj->threadID = $event['userId'];
-			$myObj->text = $event['text'];
+			$myObj->text = $event['message']['text'];
 			$myObj->form = "line";
 			
 			//$data_json = $senderID.$threadID.$text.$form ;
