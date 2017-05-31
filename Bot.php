@@ -16,6 +16,10 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// set value new ;
+			$myObj->name = "John";
+			$myObj->age = 30;
+			$myObj->city = "New York";
+			
 			$senderID = $event['replyToken'];
 			$threadID = $event['userId'];
 			$form = "line";
@@ -25,7 +29,7 @@ if (!is_null($events['events'])) {
 			
 			//$data_json = $senderID.$threadID.$text.$form ;
 			
-			$data_json = json_encode($senderID,$threadID,$form,$text);
+			$data_json = json_encode($myObj);
 			
 			//set jsondata to http  server 
 			$jsondata = file_get_contents('http://202.28.37.32/smartcsmju/project_class/LineAPI/Bot.php?msg='.$data_json);
